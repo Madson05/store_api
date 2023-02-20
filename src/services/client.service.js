@@ -13,10 +13,14 @@ const getClient = async (id) => {
 const deleteClient = async (id) => {
   return await clientRepository.deleteClient(id)
 }
+const updateClient = async (client) => {
+  return await clientRepository.updateClient(client)
+}
 
 export default {
   createClient,
   getClients,
   getClient,
-  deleteClient
+  deleteClient,
+  updateClient
 }
