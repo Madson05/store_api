@@ -23,6 +23,51 @@ const insertClient = async (client) => {
   }
 };
 
+const getClients = async () => {
+  const conn = await connect();
+  try {
+    const res = await conn.query("SELECT * FROM clients");
+    return res.rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
+const getClient = async () => {
+  const conn = await connect();
+  try {
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
+const updateClient = async () => {
+  const conn = await connect();
+  try {
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
+const deleteClient = async () => {
+  const conn = await connect();
+  try {
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
 export default {
   insertClient,
+  getClients,
+  getClient,
+  updateClient,
+  deleteClient,
 };

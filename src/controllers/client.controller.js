@@ -22,11 +22,21 @@ const createClient = async (req, res, next) => {
   }catch(error){
     next(error)
   }
-
 }
+  const getClients = async (req, res, next) => {
+    try{
+      res.send(await clientService.getClients())
+      global.logger.info("/getClients")
+    }catch(error){
+      next(error)
+    }
+  }
+
+
 
 
 export default {
   createClient,
+  getClients
 
 }
