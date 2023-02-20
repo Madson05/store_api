@@ -7,8 +7,16 @@ const createClient = async (client) => {
 const getClients = async () => {
   return await clientRepository.getClients()
 }
+const getClient = async (id) => {
+  return await clientRepository.getClient(id)
+}
+const deleteClient = async (id) => {
+  return await clientRepository.deleteClient(id)
+}
 
 export default {
   createClient,
-  getClients
+  getClients,
+  getClient,
+  deleteClient
 }

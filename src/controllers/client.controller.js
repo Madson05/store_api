@@ -1,42 +1,64 @@
 import clientService from "../services/client.service.js";
 
-
 const createClient = async (req, res, next) => {
-  try{
+  try {
     const client = req.body;
 
     // validações
 
     let validateString = "";
 
-    if(!client.name) validateString += "name, "
-    if(!client.cpf) validateString += "cpf, "
-    if(!client.phone) validateString += "phone, "
-    if(!client.email) validateString += "email, "
-    if(!client.address) validateString += "address, "
-    if(validateString) throw new Error(`Campo(s) ${validateString}tem preechimento obrigatório.`)
+    if (!client.name) validateString += "name, ";
+    if (!client.cpf) validateString += "cpf, ";
+    if (!client.phone) validateString += "phone, ";
+    if (!client.email) validateString += "email, ";
+    if (!client.address) validateString += "address, ";
+    if (validateString)
+      throw new Error(
+        `Campo(s) ${validateString}tem preechimento obrigatório.`
+      );
 
-    global.logger.info(`Created client ${client.name}`)
+    global.logger.info(`Created client ${client.name}`);
 
-    res.status(201).send(await clientService.createClient(client))
-  }catch(error){
-    next(error)
+    res.status(201).send(await clientService.createClient(client));
+  } catch (error) {
+    next(error);
   }
-}
-  const getClients = async (req, res, next) => {
-    try{
-      res.send(await clientService.getClients())
-      global.logger.info("/getClients")
-    }catch(error){
-      next(error)
-    }
+};
+const getClients = async (req, res, next) => {
+  try {
+    
+    global.logger.info(`get Clients`);
+    res.send(await clientService.getClients());
+  } catch (error) {
+    next(error);
   }
-
-
-
+};
+const getClient = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    if (!id) throw new Error("Informe o Id do cliente na rota.");
+    
+    global.logger.info(`GET Client ${id}` );
+    res.send(await clientService.getClient(id));
+  } catch (error) {
+    next(error);
+  }
+};
+const deleteClient = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    if (!id) throw new Error("Informe o Id do cliente na rota.");
+    lobal.logger.info(`DELETE Client ${id}` );
+    res.send(await clientService.deleteClient(id));
+  } catch (error) {
+    next(error);
+  }
+};
 
 export default {
   createClient,
-  getClients
-
-}
+  getClients,
+  getClient,
+  deleteClient,
+};
