@@ -48,7 +48,7 @@ const deleteSupplier = async (req, res, next) => {
   try {
     const id = req.params.id;
     if (!id) throw new Error("Informe o Id do suppliere na rota.");
-    lobal.logger.info(`DELETE Supplier ${id}` );
+    global.logger.info(`DELETE Supplier ${id}` );
     res.send(await supplierService.deleteSupplier(id));
   } catch (error) {
     next(error);
