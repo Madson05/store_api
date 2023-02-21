@@ -7,7 +7,6 @@ const createClient = async (req, res, next) => {
     // validações
 
     let validateString = "";
-    if (!client.id) validateString += "id, "
     if (!client.name) validateString += "name, ";
     if (!client.cpf) validateString += "cpf, ";
     if (!client.phone) validateString += "phone, ";
@@ -63,7 +62,7 @@ const updateClient = async (req, res, next) => {
     // validações
 
     let validateString = "";
-
+    if (!client.id) validateString += "id, "
     if (!client.name) validateString += "name, ";
     if (!client.cpf) validateString += "cpf, ";
     if (!client.phone) validateString += "phone, ";
