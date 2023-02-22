@@ -12,13 +12,12 @@ const getProducts = async () => {
   return await productRepository.getProducts()
 }
 const getProduct = async (id) => {
-  const product = await productRepository.getProduct(id)
-  if(product) {
-    return product;
-  }
-  throw new Error("Produto inexistente no banco de dados.")
+  await productRepository.checkId(id);
+  return await productRepository.getProduct(id);
+  
 }
 const deleteProduct = async (id) => {
+  await productRepository.checkId(id);
   return await productRepository.deleteProduct(id)
 }
 const updateProduct = async (product) => {
