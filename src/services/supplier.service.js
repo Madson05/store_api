@@ -8,12 +8,15 @@ const getSuppliers = async () => {
   return await supplierRepository.getSuppliers()
 }
 const getSupplier = async (id) => {
+  await supplierRepository.checkId(id)
   return await supplierRepository.getSupplier(id)
 }
 const deleteSupplier = async (id) => {
+  await supplierRepository.checkId(id)
   return await supplierRepository.deleteSupplier(id)
 }
 const updateSupplier = async (supplier) => {
+  await supplierRepository.checkId(supplier.id)
   return await supplierRepository.updateSupplier(supplier)
 }
 
