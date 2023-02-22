@@ -51,6 +51,26 @@ const getSupplier = async (id) => {
   }
 };
 
+const checkId = async (id) => {
+  const conn = await connect();
+  try {
+    const res = await conn.query(
+      "SELECT supplier_id from suppliers where supplier_id = $1;",
+      [id]
+    );
+
+    if(res.rows[0]) {
+      return true;
+    }
+
+    throw new Error("supplier_id não existente.");
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
 const updateSupplier = async (supplier) => {
   const conn = await connect();
   try {
@@ -95,4 +115,5 @@ export default {
   getSupplier,
   updateSupplier,
   deleteSupplier,
+  checkId
 };

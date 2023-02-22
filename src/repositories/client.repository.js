@@ -51,6 +51,26 @@ const getClient = async (id) => {
   }
 };
 
+const checkId = async (id) => {
+  const conn = await connect();
+  try {
+    const res = await conn.query(
+      "SELECT client_id from clients where client_id = $1;",
+      [id]
+    );
+
+    if(res.rows[0]) {
+      return true;
+    }
+
+    throw new Error("client_id não existente.");
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
 const updateClient = async (client) => {
   const conn = await connect();
   try {
@@ -95,4 +115,5 @@ export default {
   getClient,
   updateClient,
   deleteClient,
+  checkId
 };
