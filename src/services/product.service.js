@@ -2,9 +2,9 @@ import productRepository from "../repositories/product.repository.js"
 import supplierRepository from "../repositories/supplier.repository.js"
 
 const createProduct = async (product) => {
-  if(await supplierRepository.getSupplier(product.supplier_id)){
-    return await productRepository.insertProduct(product)
-  }throw new Error("O supplier_id informado não é válido. Faça uma consulta na table suppliers e verifique os suppliers_id's existentes.")
+  await productRepository.checkId(product.id);
+  return await productRepository.insertProduct(product)
+  
   
 }
 
