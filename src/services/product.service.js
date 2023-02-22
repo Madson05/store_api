@@ -3,7 +3,7 @@ import supplierRepository from "../repositories/supplier.repository.js"
 
 const createProduct = async (product) => {
   await productRepository.checkId(product.id);
-  return await productRepository.insertProduct(product)
+  return await supplierRepository.insertProduct(product)
   
   
 }
