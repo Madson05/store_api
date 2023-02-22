@@ -2,8 +2,8 @@ import productRepository from "../repositories/product.repository.js"
 import supplierRepository from "../repositories/supplier.repository.js"
 
 const createProduct = async (product) => {
-  await productRepository.checkId(product.id);
-  return await supplierRepository.insertProduct(product)
+  await supplierRepository.checkId(product.supplier_id);
+  return await productRepository.insertProduct(product)
   
   
 }
