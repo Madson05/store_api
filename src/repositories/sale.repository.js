@@ -5,7 +5,7 @@ const insertSale = async (sale) => {
   try {
     const sql =
       "INSERT INTO sales (value, date, client_id, product_id) VALUES ($1, $2, $3, $4) RETURNING *";
-    const client_ids = [
+    const values = [
       sale.value,
       sale.date,
       sale.client_id,
@@ -13,7 +13,7 @@ const insertSale = async (sale) => {
       
     ];
 
-    const res = await conn.query(sql, client_ids);
+    const res = await conn.query(sql, values);
 
     return res.rows[0];
   } catch (error) {
@@ -76,15 +76,15 @@ const updateSale = async (sale) => {
   try {
     const sql =
       "UPDATE sales SET value = $1, date = $2, client_id = $3, product_id = $4 WHERE sale_id = $5 RETURNING *";
-    const client_ids = [
-      sale.client_id,
+    const values = [
+      sale.value,
       sale.date,
       sale.client_id,
       sale.product_id,
       sale.id,
     ];
 
-    const res = await conn.query(sql, client_ids);
+    const res = await conn.query(sql, values);
     return res.rows[0];
   } catch (error) {
     throw error;
