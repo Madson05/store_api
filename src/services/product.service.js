@@ -22,9 +22,9 @@ const deleteProduct = async (id) => {
 }
 const updateProduct = async (product) => {
   await productRepository.checkId(product.id);
-  if(await supplierRepository.getSupplier(product.supplier_id)){
-    return await productRepository.updateProduct(product);
-  }else throw new Error("O supplier_id informado não é válido. Faça uma consulta na table suppliers e verifique os suppliers_id's existentes.")
+  await supplierRepository.checkId(product.supplier_id)
+  return await productRepository.updateProduct(product);
+  
 }
 
 export default {
