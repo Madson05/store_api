@@ -35,7 +35,7 @@ const getSales = async (req, res, next) => {
 const getSale = async (req, res, next) => {
   try {
     const id = req.params.id;
-    if (!id) throw new Error("Informe o Id do salee na rota.");
+    if (!id) throw new Error("Informe o Id do sale na rota.");
     
     global.logger.info(`GET Sale ${id}` );
     res.send(await saleService.getSale(id));

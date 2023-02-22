@@ -1,8 +1,10 @@
 import saleRepository from "../repositories/sale.repository.js"
-import supplierRepository from "../repositories/supplier.repository.js"
+import clientRepository from "../repositories/client.repository.js"
+import productRepository from "../repositories/product.repository.js"
 
 const createSale = async (sale) => {
-  await supplierRepository.checkId(sale.supplier_id);
+  await productRepository.checkId(sale.product_id)
+  await clientRepository.checkId(sale.client_id);
   return await saleRepository.insertSale(sale)
 }
 
@@ -19,8 +21,10 @@ const deleteSale = async (id) => {
   return await saleRepository.deleteSale(id)
 }
 const updateSale = async (sale) => {
+  
   await saleRepository.checkId(sale.id);
-  await supplierRepository.checkId(sale.supplier_id)
+  await clientRepository.checkId(sale.client_id)
+  await productRepository.checkId(sale.product_id)
   return await saleRepository.updateSale(sale);
   
 }
