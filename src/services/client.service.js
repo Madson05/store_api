@@ -16,7 +16,7 @@ const deleteClient = async (id) => {
   return await clientRepository.deleteClient(id)
 }
 const updateClient = async (client) => {
-  await clientRepository.checkId(client.id)
+  await clientRepository.checkId(client.client_id)
   return await clientRepository.updateClient(client)
 }
 

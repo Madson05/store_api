@@ -21,7 +21,7 @@ const deleteProduct = async (id) => {
   return await productRepository.deleteProduct(id)
 }
 const updateProduct = async (product) => {
-  await productRepository.checkId(product.id);
+  await productRepository.checkId(product.product_id);
   await supplierRepository.checkId(product.supplier_id)
   return await productRepository.updateProduct(product);
   
