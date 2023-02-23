@@ -62,7 +62,7 @@ const updateSupplier = async (req, res, next) => {
     // validações
 
     let validateString = "";
-    if (!supplier.id) validateString += "id, "
+    if (!supplier.supplier_id) validateString += "supplier_id, "
     if (!supplier.name) validateString += "name, ";
     if (!supplier.cnpj) validateString += "cnpj, ";
     if (!supplier.phone) validateString += "phone, ";

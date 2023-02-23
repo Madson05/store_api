@@ -61,11 +61,10 @@ const updateSale = async (req, res, next) => {
     // validações
 
     let validateString = "";
-    if (!sale.id) validateString += "id, "
+    if (!sale.sale_id) validateString += "sale_id, "
     if (!sale.value) validateString += "value, ";
     if (!sale.date) validateString += "date, ";
     if (!sale.client_id) validateString += "client_id, ";
-    if (!sale.product_id) validateString += "product_id, ";
     if (validateString)
       throw new Error(
         `Campo(s) ${validateString}tem preechimento obrigatório.`

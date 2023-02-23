@@ -37,7 +37,7 @@ const deleteSale = async (id) => {
 }
 const updateSale = async (sale) => {
   
-  await saleRepository.checkId(sale.id);
+  await saleRepository.checkId(sale.sale_id);
   await clientRepository.checkId(sale.client_id)
   await productRepository.checkId(sale.product_id)
   return await saleRepository.updateSale(sale);

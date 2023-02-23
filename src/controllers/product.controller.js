@@ -62,7 +62,7 @@ const updateProduct = async (req, res, next) => {
     // validações
 
     let validateString = "";
-    if (!product.id) validateString += "id, "
+    if (!product.product_id) validateString += "product_id, "
     if (!product.name) validateString += "name, ";
     if (!product.description) validateString += "description, ";
     if (!product.value) validateString += "value, ";

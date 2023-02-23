@@ -62,7 +62,7 @@ const updateClient = async (req, res, next) => {
     // validações
 
     let validateString = "";
-    if (!client.id) validateString += "id, "
+    if (!client.client_id) validateString += "client_id, "
     if (!client.name) validateString += "name, ";
     if (!client.cpf) validateString += "cpf, ";
     if (!client.phone) validateString += "phone, ";
