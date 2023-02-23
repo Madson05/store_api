@@ -82,7 +82,7 @@ const updateSupplier = async (supplier) => {
       supplier.phone,
       supplier.email,
       supplier.address,
-      supplier.id,
+      supplier.supplier_id,
     ];
 
     const res = await conn.query(sql, values);

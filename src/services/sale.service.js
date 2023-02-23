@@ -3,9 +3,19 @@ import clientRepository from "../repositories/client.repository.js"
 import productRepository from "../repositories/product.repository.js"
 
 const createSale = async (sale) => {
-  await productRepository.checkId(sale.product_id)
   await clientRepository.checkId(sale.client_id);
-  return await saleRepository.insertSale(sale)
+  const product = await productRepository.getProduct(sale.product_id)
+  if(!product) throw new Error("product_id inexistente")
+  if(product.stock>0){
+    console.log(product.product_id + "-" + product.stock)
+    product.stock--;
+    console.log(product.product_id + "-" + product.stock)
+    await productRepository.updateProduct(product)
+    return await saleRepository.insertSale(sale)
+  }else{
+    throw new Error("O produto informado não possui estoque.")
+  }
+  
 }
 
 const getSales = async () => {

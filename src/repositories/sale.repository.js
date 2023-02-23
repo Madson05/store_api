@@ -81,7 +81,7 @@ const updateSale = async (sale) => {
       sale.date,
       sale.client_id,
       sale.product_id,
-      sale.id,
+      sale.sale_id,
     ];
 
     const res = await conn.query(sql, values);
