@@ -27,7 +27,12 @@ const getSale = async (id) => {
   
 }
 const deleteSale = async (id) => {
-  await saleRepository.checkId(id);
+
+  const sale = await saleRepository.getSale(id)
+  if(!sale) throw new Error("sale_id não existente")
+  const product = await productRepository.getProduct(sale.product_id);
+  product.stock++;
+  await productRepository.updateProduct(product)
   return await saleRepository.deleteSale(id)
 }
 const updateSale = async (sale) => {
