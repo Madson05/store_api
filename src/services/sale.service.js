@@ -18,8 +18,14 @@ const createSale = async (sale) => {
   
 }
 
-const getSales = async () => {
+const getSales = async (productId) => {
+
+  if(productId){
+    return await saleRepository.getSalesByProductId(productId)
+
+  }
   return await saleRepository.getSales()
+  
 }
 const getSale = async (id) => {
   await saleRepository.checkId(id);

@@ -27,7 +27,7 @@ const getSales = async (req, res, next) => {
   try {
     
     global.logger.info(`get Sales`);
-    res.send(await saleService.getSales());
+    res.send(await saleService.getSales(req.query.product_id));
   } catch (error) {
     next(error);
   }

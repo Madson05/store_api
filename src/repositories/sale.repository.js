@@ -35,6 +35,18 @@ const getSales = async () => {
   }
 };
 
+const getSalesByProductId = async (product_id) => {
+  const conn = await connect();
+  try {
+    const res = await conn.query("SELECT * FROM sales WHERE product_id = $1", [product_id]);
+    return res.rows;
+  } catch (error) {
+    throw error;
+  } finally {
+    conn.release();
+  }
+};
+
 const getSale = async (id) => {
   const conn = await connect();
   try {
@@ -110,6 +122,7 @@ const deleteSale = async (id) => {
 export default {
   insertSale,
   getSales,
+  getSalesByProductId,
   getSale,
   updateSale,
   deleteSale,
